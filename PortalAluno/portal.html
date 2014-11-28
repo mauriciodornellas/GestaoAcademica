@@ -66,12 +66,13 @@
 						
 						<div class="align-center">
 							<!--<i class="fa fa-flask fa-5x mar-bot20"></i>-->
+							<div>
+							 	<img src="Imagens/icone_cadastro.png" alt="Ícone de apresentação da página" title="Ícone da Página" width="150" height="150" />
+							</div>
 							<h2 class="slogan">Portal do Aluno</h2>
 							<p>Todos os campos são de preenchimento obrigatório para que o cadastro do aluno possa ser realizado com sucesso.</p>
 							<br>
-							<div class="div_conteudo"> <!--class="div_conteudo" -->
-        				 	<div id="div_filho">
-							<form action="grava_dados.php" method="Post" name="frmCadCli" onsubmit="Javascript:return testaFrmCadastro();"> 
+							<form action="grava_dados.php" method="Post" name="frmCadCli" onsubmit="Javascript:return testaFrmCadastro();" onreset="grava_dados.php"> 
 
 						       <p>
 							      <label for="nome">Nome:</label>
@@ -110,11 +111,9 @@
 						       </p>
 
 						            <input type="submit" class="btn btn-info" name="btnSalvar" value="Salvar"/>&nbsp;
-						            <input type="reset" class="btn btn-info" name="btnCancelar" value="Cancelar"/>
 						            <input type="reset" class="btn btn-info" name="btnListarAlunos" value="Listar Alunos"/>
-					        </form>
-						</div>
-						</div>		
+						            <!-- <input type="reset" class="btn btn-info" name="btnCancelar" value="Cancelar"/>-->
+					        </form>	
 						</div>
 					</div>
 				</div>
