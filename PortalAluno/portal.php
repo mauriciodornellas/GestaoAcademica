@@ -1,10 +1,8 @@
+
+<?php session_start() ?> 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+ <html class="no-js"> 
     <head>
-		<!-- BASICS -->
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>Fafire</title>
@@ -71,49 +69,52 @@
 							</div>
 							<h2 class="slogan">Portal do Aluno</h2>
 							<p>Todos os campos são de preenchimento obrigatório para que o cadastro do aluno possa ser realizado com sucesso.</p>
-							<br>
-							<form action="grava_dados.php" method="Post" name="frmCadCli" onsubmit="Javascript:return testaFrmCadastro();" onreset="grava_dados.php"> 
+							<br>	
+							<form action="grava_dados.php" method="Post" name="frmCadCli"> 
 
 						       <p>
 							      <label for="nome">Nome:</label>
 							       <br>
-							      <input type="text" name="nomAluno" value="" placeholder="Ex.: Maurício Dornellas" size="61px">
+							      <input type="text" name="nome" required="required" style="color: black" placeholder="Ex.: Maurício Dornellas" size="61px">
 						       </p>
 						            
 						       <p>
 							      <label>Matrícula:</label>
 							       	<br>
-							      <input type="text" name="matAluno" value="" placeholder="Ex.: 04567850401" size="61px">
+							      <input type="text" name="mat" required="required" style="color: black" placeholder="Ex.: 04567850401" size="61px">
 						       </p>
 						            
 						       <p>
 						          <label for="email">E-mail:</label>
 						          <br>
-						          <input type="text" name="email" value="" placeholder="Ex.: teste@test.com.br" size="61px">
+						          <input type="email" name="email" required="required" style="color: black" placeholder="Ex.: teste@test.com.br" size="61px">
 						       </p>
 
-						       <p>
+						      <!-- <p>
 						          <label for="confemail">Confirmar e-mail:</label>
 						       		<br>
-						          <input class="" type="text" name="confirmaEmail" value="" placeholder="Ex.: teste@test.com.br" size="61px">
-						       </p>
+						          <input class="" type="email" name="confirmaEmail" required="required" style="color: black" placeholder="Ex.: teste@test.com.br" size="61px">
+						       </p>-->
 
 						       <p>
 						          <label for="senha">Senha:</label>
 						          	<br>
-						          <input type="password" name="senAluno" value=""  placeholder="Ex.: 12345678" size="61px">
+						          <input type="password" name="senha" required="required" style="color: black""  placeholder="Ex.: 12345678" size="61px">
 						       </p> 
 						     
-						       <p>
+						    <!-- <p>
 						          <label for="confsenha">Confirmar Senha</label>
 						          <br>
-						          <input type="password" name="confirmarSenha" value="" placeholder="Ex.: 12345678" size="61px">
-						       </p>
-
-						            <input type="submit" class="btn btn-info" name="btnSalvar" value="Salvar"/>&nbsp;
-						            <input type="reset" class="btn btn-info" name="btnListarAlunos" value="Listar Alunos"/>
-						            <!-- <input type="reset" class="btn btn-info" name="btnCancelar" value="Cancelar"/>-->
+						          <input type="password" required="required" style="color: black" placeholder="Ex.: 12345678" size="61px">
+						       </p> -->
+						       
+						         <input type="submit" class="btn btn-info" value="Salvar"/>&nbsp;
+						     <br>
+						     <br>
 					        </form>	
+					        <form action="grava_dados.php" method="Get">
+						      <input type="submit" class="btn btn-info" name="btnListarAlunos" value="Listar Cadastros"/>
+						    </form>
 						</div>
 					</div>
 				</div>

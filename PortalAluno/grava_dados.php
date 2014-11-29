@@ -1,52 +1,32 @@
+<?php  
+ session_start();
+if(!isset($_SESSION['alunos'])){
+  $_SESSION['alunos'] = array();
+  $sucesso = false;
+}
+
+if($_POST){
+  $_SESSION['alunos'][] = $_POST;
+  $sucesso = true;
+}
+
+?>
   <!DOCTYPE html>
     <head>
-  
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Fafire</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" /> 
-    <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-        <link rel="stylesheet" href="css/style.css">
-        <link href="css1/master.css" rel="stylesheet" media="screen">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Fafire</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" /> 
+      <link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap-theme.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link href="css1/master.css" rel="stylesheet" media="screen">
       <script src="scripts.js" language="javascript"></script>
-    <!-- skin -->
-    <link rel="stylesheet" href="skin/default.css">
-  <?
-  //PEGA OS DADOS ENVIADOS PELO FORMULÁRIO
-  $nomAluno = $_POST["nomAluno"];
-  $matAluno = $_POST["matAluno"];
-  $email = $_POST["email"];
-  $senAluno = $_POST["senAluno"];
-  
-  //PREPARA O CONTEÚDO A SER GRAVADO
-  $conteudo = "$nomAluno,$matAluno,$email,$senAluno\r\n";
-  
-  //ARQUIVO TXT
-  $arquivo  = "dados_salvos.txt";
-  
-  //TENTA ABRIR O ARQUIVO TXT
-  if (!$abrir = fopen($arquivo, "a")) {
-     echo  "Erro abrindo arquivo ($arquivo)";
-     exit;
-  }
-  
-  //ESCREVE NO ARQUIVO TXT
-  if (!fwrite($abrir, $conteudo)) {
-    print "Erro escrevendo no arquivo ($arquivo)";
-    exit;
-  }
-  
-  echo "Arquivo gravado com Sucesso !!";
-  
-  //FECHA O ARQUIVO 
-  fclose($abrir);
-?>
-
-</header>
+      <link rel="stylesheet" href="skin/default.css">
+    </header>
     <body>
       <section id="header" class="appear"></section>
     <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
@@ -59,8 +39,7 @@
           </a></h1>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-        
+          <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;"> 
             <li><a href="./modulos/Biblioteca/home.html">Biblioteca</a></li>
             <li><a href="./modulos/Cantina/index.html">Cantina</a></li>
             <li><a href="./modulos/Estacionamento/index.html">Estacionamento</a></li>
@@ -81,7 +60,7 @@
                   </ul>
                 </li>
           </ul>
-        </div><!--/.navbar-collapse -->
+        </div>
       </div>
     </div>
 
@@ -97,24 +76,40 @@
               </div>
               <h2 class="slogan">Lista de Registros</h2>
               <br>
-              
+              <div align="center">
+                <table border=”2” align=”center”>
+                <tr>
+                  <th>Matrícula &nbsp;</th>
+                  <th>Nome &nbsp;</th>
+                  <th>Email &nbsp;</th>
+                  <th>Senha</th>
+                </tr>
                 <?php
-                    $nomAluno = $_POST['nomAluno'];
-                    $matAluno = $_POST['matAluno'];
-                    $email = $_POST['email'];
-                    $senAluno = $_POST['senAluno'];
+                    $alunos = $_SESSION['alunos'];
+                    $sucesso = true;
 
-                    $handle = fopen ("dados_salvos.txt", "w");
-                    $conteudo = "$nomAluno,$matAluno,$email,$senAluno\r\n";
-                    fwrite($handle, $conteudo);
-                    {
-                    echo "Arquivo Salvo corretamente. <br/>";
-                    echo "<br/>Clique <a href='portal.html'>aqui</a> e volte a pagina de edição<p></p>";
-                    }
-
-                    fclose($handle);
+                    foreach ($alunos as $aluno) {
+  
+                      $nome = $aluno['nome'];
+                      $mat = $aluno['mat'];
+                      $email = $aluno['email'];
+                      $senha = $aluno['senha'];
+                      echo "<tr><td>$mat &nbsp;</td><td>$nome &nbsp;</td><td>$email &nbsp;</td><td>$senha</td></tr>";
+                    
+                    } 
                   ?>
-                  
+                </table>
+                <br>
+              </div>
+                <br>   
+           <div> 
+            <h4>     
+              Clique <a href='portal.php'>aqui 
+              <img src="Imagens/add1.ico" alt="Ícone" title="Voltar à página de cadastro" width="30" height="30" /></a> para continuar cadastrando ou 
+              <a href='encerrarsessao.php'>aqui 
+              <img src="Imagens/encerrar.ico" alt="Ícone de apresentação da página" link"blue" title="Encerrar a sessão e voltar à página inicial" width="25" height="25" /></a> para encerrar a sessão e limpar os registros.
+            </h4>
+           </div>   
           </section>
         
     <!-- contact -->
